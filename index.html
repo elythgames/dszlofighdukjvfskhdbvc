@@ -845,6 +845,94 @@ h2{
   .telegram-security{grid-column:1 / -1}
 }
 
+
+/* Top Telegram coordination banner */
+.telegram-topbar{
+  position:relative;
+  z-index:4;
+  margin-top:8px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:16px;
+  padding:16px 18px;
+  border-radius:20px;
+  border:1px solid rgba(42,171,238,.38);
+  background:
+    radial-gradient(circle at 0 50%,rgba(42,171,238,.18),transparent 34%),
+    linear-gradient(180deg,rgba(20,30,44,.96),rgba(13,20,30,.96));
+  box-shadow:0 18px 55px rgba(0,0,0,.28);
+  backdrop-filter:blur(14px);
+}
+.telegram-topbar-icon{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:#2AABEE;
+  box-shadow:0 10px 30px rgba(42,171,238,.28);
+}
+.telegram-topbar-icon svg{width:28px;height:28px;display:block}
+.telegram-topbar-copy strong{
+  display:block;
+  color:#fff;
+  font-size:16px;
+  line-height:1.2;
+  margin-bottom:3px;
+}
+.telegram-topbar-copy span{
+  display:block;
+  color:#aeb9c8;
+  font-size:13px;
+}
+.telegram-topbar-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:0 16px;
+  border-radius:13px;
+  background:#2AABEE;
+  color:#fff!important;
+  font-size:13px;
+  font-weight:900;
+  white-space:nowrap;
+  transition:transform .2s ease,filter .2s ease,box-shadow .2s ease;
+}
+.telegram-topbar-btn:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.05);
+  box-shadow:0 12px 32px rgba(42,171,238,.22);
+}
+.telegram-float{
+  position:fixed;
+  right:16px;
+  bottom:16px;
+  z-index:50;
+  display:none;
+  align-items:center;
+  gap:9px;
+  padding:12px 14px;
+  border-radius:999px;
+  background:#2AABEE;
+  color:#fff!important;
+  font-size:13px;
+  font-weight:900;
+  box-shadow:0 14px 40px rgba(0,0,0,.36);
+}
+.telegram-float svg{width:20px;height:20px}
+@media(max-width:760px){
+  .telegram-topbar{
+    grid-template-columns:auto 1fr;
+    padding:14px;
+  }
+  .telegram-topbar-btn{
+    grid-column:1 / -1;
+    width:100%;
+  }
+  .telegram-topbar-copy strong{font-size:15px}
+  .telegram-topbar-copy span{font-size:12px}
+  .telegram-float{display:flex}
+}
+
 </style>
 </head>
 <body>
@@ -865,6 +953,21 @@ h2{
         <a href="#countdown">17 octobre</a>
       </div>
     </nav>
+
+    <div class="telegram-topbar reveal">
+      <div class="telegram-topbar-icon" aria-hidden="true">
+        <svg viewBox="0 0 64 64">
+          <path fill="#fff" d="M52.7 12.3 7.8 29.6c-3.1 1.2-3 2.9-.6 3.6l11.5 3.6 4.4 13.7c.6 1.7.3 2.4 2.1 2.4 1.4 0 2.1-.6 2.9-1.4l5.6-5.4 11.6 8.6c2.1 1.2 3.7.6 4.2-2l7.6-35.7c.8-3.1-1.2-4.5-4.4-3.7ZM22.1 36l25.9-16.3c1.3-.8 2.4-.4 1.5.4L28.2 39.3l-.8 8.3-5.3-11.6Z"/>
+        </svg>
+      </div>
+      <div class="telegram-topbar-copy">
+        <strong>Groupe Telegram de coordination</strong>
+        <span>Un seul espace pour centraliser les propositions de villes, lieux et horaires, au lieu de disperser les informations entre plusieurs groupes.</span>
+      </div>
+      <a class="telegram-topbar-btn" href="https://t.me/+JlEL6e97yLM0ODhk" target="_blank" rel="noopener noreferrer">
+        Ouvrir le groupe
+      </a>
+    </div>
     <div class="hero-copy">
       <p class="kicker">Mobilisation lycéenne · 2 octobre 2026</p>
       <h1>ATHENA 2</h1>
@@ -1464,5 +1567,13 @@ chatForm.addEventListener("submit",async e=>{
   }
 });
 </script>
+
+<a class="telegram-float" href="https://t.me/+JlEL6e97yLM0ODhk" target="_blank" rel="noopener noreferrer" aria-label="Ouvrir le groupe Telegram">
+  <svg viewBox="0 0 64 64" aria-hidden="true">
+    <path fill="#fff" d="M52.7 12.3 7.8 29.6c-3.1 1.2-3 2.9-.6 3.6l11.5 3.6 4.4 13.7c.6 1.7.3 2.4 2.1 2.4 1.4 0 2.1-.6 2.9-1.4l5.6-5.4 11.6 8.6c2.1 1.2 3.7.6 4.2-2l7.6-35.7c.8-3.1-1.2-4.5-4.4-3.7ZM22.1 36l25.9-16.3c1.3-.8 2.4-.4 1.5.4L28.2 39.3l-.8 8.3-5.3-11.6Z"/>
+  </svg>
+  Telegram
+</a>
+
 </body>
 </html>
