@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ATHENA 2 — mobilisation lycéenne : rendez-vous du jour, revendications et compte à rebours jusqu'au 17 octobre." />
+  <title>ATHENA 2 — Mobilisation lycéenne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="hero" id="top">
+    <div class="overlay"></div>
+    <nav class="nav container">
+      <div class="brand">ATHENA <span>2</span></div>
+      <div class="nav-links">
+        <a href="#rdv">Rendez-vous</a>
+        <a href="#revendications">Revendications</a>
+        <a href="#securite">Sécurité</a>
+        <a href="#countdown">Countdown</a>
+      </div>
+    </nav>
+
+    <div class="hero-content container">
+      <p class="eyebrow">Mobilisation lycéenne · 2 octobre 2026</p>
+      <h1>Une jeunesse qui se fait entendre.</h1>
+      <p class="hero-text">
+        Informations du jour, villes mobilisées, revendications largement exprimées dans les blocages et
+        compte à rebours jusqu'au 17 octobre.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#rdv">Voir les rendez-vous</a>
+        <a class="btn btn-secondary" href="#revendications">Lire les revendications</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="stats">
+      <div class="container stats-grid">
+        <div class="stat-card">
+          <span class="stat-label">Lille</span>
+          <strong>Porte des Postes · 14h</strong>
+          <p>Tous les lycées appelés à venir.</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Mouvement national</span>
+          <strong>640 lycées + 30 universités</strong>
+          <p>Blocages recensés le 1er octobre selon l'Union Étudiante.</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Objectif</span>
+          <strong>Être entendus</strong>
+          <p>Conditions d'études dignes, moyens humains, fin du mépris.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rdv">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Aujourd'hui</p>
+          <h2>Rendez-vous et villes mobilisées</h2>
+          <p>
+            Les horaires peuvent évoluer rapidement. Vérifiez toujours les informations locales avant de vous déplacer.
+          </p>
+        </div>
+
+        <div class="featured-rdv">
+          <div>
+            <span class="chip">Point principal</span>
+            <h3>Lille</h3>
+            <p class="featured-meta">Porte des Postes · 14h</p>
+            <p>
+              Rassemblement annoncé aujourd'hui à Lille. Appel large à la mobilisation des lycéennes, lycéens,
+              étudiant·es, enseignant·es et soutiens.
+            </p>
+          </div>
+          <div class="featured-side">
+            <p><strong>Consigne :</strong> tous les lycées sont appelés à venir.</p>
+            <p><strong>À prévoir :</strong> eau, téléphone chargé, point de contact, trajet retour.</p>
+          </div>
+        </div>
+
+        <div class="cards" id="city-cards"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="revendications">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Pourquoi</p>
+          <h2>Les revendications mises en avant</h2>
+          <p>
+            Cette section synthétise les demandes le plus souvent relayées par les organisations étudiantes et les médias.
+          </p>
+        </div>
+
+        <div class="claims-grid">
+          <article class="claim-card">
+            <h3>Plus de moyens pour l'éducation</h3>
+            <p>
+              Davantage de financement, de personnels et de ressources pour garantir des conditions d'étude dignes.
+            </p>
+          </article>
+
+          <article class="claim-card">
+            <h3>Remplacement des enseignant·es</h3>
+            <p>
+              Fin des heures perdues et remplacement effectif des professeurs absents.
+            </p>
+          </article>
+
+          <article class="claim-card">
+            <h3>Classes moins surchargées</h3>
+            <p>
+              Réduction des effectifs, amélioration de l'accompagnement et meilleure qualité d'apprentissage.
+            </p>
+          </article>
+
+          <article class="claim-card">
+            <h3>Locaux et équipements décents</h3>
+            <p>
+              Bâtiments entretenus, sécurité, équipements adaptés et meilleures conditions matérielles au quotidien.
+            </p>
+          </article>
+
+          <article class="claim-card">
+            <h3>Moins de pression et plus d'écoute</h3>
+            <p>
+              Emplois du temps plus soutenables, prise en compte de la santé mentale et respect de la parole des jeunes.
+            </p>
+          </article>
+
+          <article class="claim-card">
+            <h3>Orientation jugée plus juste</h3>
+            <p>
+              Critiques de Parcoursup, de la sélection sociale et demande d'un accès plus équitable aux études.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section safety-section" id="securite">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Sécurité</p>
+          <h2>En cas d’exposition chimique suspectée</h2>
+          <p>
+            Cette fiche rappelle les bons réflexes immédiats : s’éloigner de la zone, rincer abondamment les yeux sans les frotter,
+            retirer les vêtements contaminés, puis laver la peau. Un tissu ou vêtement humide peut parfois aider un peu face à des fumées
+            ordinaires, mais ne remplace pas une vraie protection et ne constitue pas une protection fiable contre un agent chimique.
+          </p>
+        </div>
+
+        <div class="safety-visual">
+          <img src="exposition-chimique.jpg" alt="Infographie illustrée : quitter la zone, retirer les vêtements contaminés, rincer les yeux et laver la peau." />
+        </div>
+
+        <div class="safety-grid">
+          <article class="safety-card">
+            <span>01</span>
+            <h3>Éloigne-toi</h3>
+            <p>Quitte la zone contaminée et cherche de l’air frais. Si possible, évite les zones basses et suis les instructions des autorités.</p>
+          </article>
+          <article class="safety-card">
+            <span>02</span>
+            <h3>Retire les vêtements contaminés</h3>
+            <p>Enlève les vêtements sans les faire passer sur le visage si possible, puis isole-les dans un sac sans les manipuler davantage.</p>
+          </article>
+          <article class="safety-card">
+            <span>03</span>
+            <h3>Rince les yeux</h3>
+            <p>Si les yeux brûlent ou si la vision est trouble, rince-les abondamment à l’eau tiède pendant 10 à 15 minutes. Ne les frotte pas.</p>
+          </article>
+          <article class="safety-card">
+            <span>04</span>
+            <h3>Lave la peau</h3>
+            <p>Lave la peau et les cheveux avec beaucoup d’eau tiède et du savon doux. Ne frotte pas agressivement la peau.</p>
+          </article>
+        </div>
+
+        <div class="safety-warning">
+          <strong>Important :</strong> cette fiche est une information de sécurité générale. Elle ne signifie pas qu’un agent chimique particulier a été utilisé lors d’une manifestation. En cas de gêne respiratoire, brûlure, cloques ou troubles visuels, contacte immédiatement les secours.
+        </div>
+      </div>
+    </section>
+
+    <section class="section countdown-section" id="countdown">
+      <div class="container countdown-wrap">
+        <div>
+          <p class="section-kicker">Échéance</p>
+          <h2>Compte à rebours jusqu'au 17 octobre</h2>
+          <p>
+            Le compteur ci-dessous se met à jour automatiquement jusqu'au 17 octobre 2026 à 00:00.
+          </p>
+        </div>
+
+        <div class="countdown-grid" aria-live="polite">
+          <div class="count-box"><span id="days">00</span><small>jours</small></div>
+          <div class="count-box"><span id="hours">00</span><small>heures</small></div>
+          <div class="count-box"><span id="minutes">00</span><small>minutes</small></div>
+          <div class="count-box"><span id="seconds">00</span><small>secondes</small></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
