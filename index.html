@@ -40,14 +40,20 @@ a{text-decoration:none}
   border-bottom:1px solid var(--line);
   background:#0b0e14;
 }
-.hero-art{
+.hero-media{
   position:absolute;
   inset:0;
+  z-index:0;
+  display:block;
+  overflow:hidden;
+  background:#080a0f;
+}
+.hero-art{
+  display:block;
   width:100%;
   height:100%;
   object-fit:cover;
   object-position:center;
-  z-index:0;
 }
 .hero-shade{
   position:absolute;
@@ -203,7 +209,19 @@ h2{
   overflow:hidden;
   background:#0f141d;
 }
-.safety-poster{width:100%;display:block;background:#111720}
+.safety-media{
+  display:block;
+  width:100%;
+  background:#111720;
+}
+.safety-poster{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:1279/720;
+  object-fit:contain;
+  background:#111720;
+}
 .safe-grid{grid-template-columns:repeat(4,1fr);padding:14px;margin:0}
 .safe-card{
   border:1px solid var(--line);
@@ -245,7 +263,7 @@ h2{
 .counter span{display:block;color:#fff;font-size:clamp(34px,5vw,58px);font-weight:950;line-height:1}
 .counter small{display:block;margin-top:9px;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:800}
 @media(max-width:900px){
-  .hero{min-height:720px}
+  .hero{min-height:680px}
   .navlinks{gap:14px}
   .quick-grid,.city-grid,.claim-grid{grid-template-columns:1fr}
   .feature{grid-template-columns:1fr}
@@ -255,13 +273,68 @@ h2{
 }
 @media(max-width:640px){
   .container{width:min(100% - 24px,var(--max))}
-  nav{height:auto;padding:18px 0;align-items:flex-start;flex-direction:column}
-  .navlinks{font-size:12px}
-  .hero-copy{min-height:590px;padding:55px 0 105px}
+  .hero{
+    min-height:0;
+    display:flex;
+    flex-direction:column;
+    background:#090b10;
+  }
+  .hero-media{
+    position:relative;
+    inset:auto;
+    width:100%;
+    height:auto;
+    aspect-ratio:1279/720;
+    order:0;
+    background:#080a0f;
+  }
+  .hero-art{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:center;
+  }
+  .hero-shade{display:none}
+  .hero>.container{
+    order:1;
+    width:min(100% - 24px,var(--max));
+  }
+  nav{
+    height:auto;
+    padding:18px 0 4px;
+    align-items:flex-start;
+    flex-direction:column;
+  }
+  .navlinks{
+    width:100%;
+    gap:9px 14px;
+    font-size:12px;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:6px;
+    scrollbar-width:none;
+  }
+  .navlinks::-webkit-scrollbar{display:none}
+  .hero-copy{
+    min-height:0;
+    max-width:none;
+    padding:38px 0 62px;
+  }
+  .hero-copy>p:not(.kicker){
+    font-size:16px;
+    margin-top:18px;
+  }
   h1{font-size:clamp(52px,17vw,76px)}
-  section{padding:68px 0}
-  .quick{margin-top:-42px}
+  section{padding:64px 0}
+  .quick{margin-top:0;padding-top:14px}
   .quick-card{min-height:0}
+  .safety-wrap{border-radius:18px}
+  .safety-poster{
+    width:100%;
+    height:auto;
+    aspect-ratio:1279/720;
+    object-fit:contain;
+  }
   .safe-grid{grid-template-columns:1fr;padding:10px}
   .warning{margin:10px}
   .counter{grid-template-columns:1fr 1fr}
@@ -270,7 +343,10 @@ h2{
 </head>
 <body>
 <header class="hero" id="top">
-  <img class="hero-art" src="hero-athena2.webp" alt="Illustration ATHENA 2 avec jeunes mobilisés, secours, Éducation nationale et CRS, datée du 17 octobre.">
+  <picture class="hero-media">
+    <source srcset="hero-athena2-hq.avif" type="image/avif">
+    <img class="hero-art" src="hero-athena2.webp" width="1279" height="720" fetchpriority="high" decoding="async" alt="Illustration ATHENA 2 avec jeunes mobilisés, secours, Éducation nationale et CRS, datée du 17 octobre.">
+  </picture>
   <div class="hero-shade"></div>
   <div class="container">
     <nav>
@@ -371,7 +447,10 @@ h2{
         <p>Des réflexes simples permettent de réduire l’exposition en attendant les instructions des secours.</p>
       </div>
       <div class="safety-wrap">
-        <img class="safety-poster" src="exposition-chimique.webp" alt="Illustration de sécurité : s'éloigner, retirer les vêtements potentiellement contaminés, rincer les yeux sans les frotter et laver la peau.">
+        <picture class="safety-media">
+    <source srcset="exposition-chimique-hq.avif" type="image/avif">
+    <img class="safety-poster" src="exposition-chimique.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Illustration de sécurité : s'éloigner, retirer les vêtements potentiellement contaminés, rincer les yeux sans les frotter et laver la peau.">
+  </picture>
         <div class="safe-grid">
           <article class="safe-card"><div class="num">1</div><h3>S’éloigner</h3><p>Quitte la zone et cherche de l’air frais. Suis les instructions des secours.</p></article>
           <article class="safe-card"><div class="num">2</div><h3>Retirer les vêtements</h3><p>Enlève les vêtements potentiellement contaminés sans les faire passer sur le visage si possible.</p></article>
