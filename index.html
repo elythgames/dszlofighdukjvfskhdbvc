@@ -601,24 +601,24 @@ h2{
   <section class="activity-section" id="activity">
     <div class="container activity-grid">
       <aside class="activity-card reveal">
-        <div class="activity-top"><span class="live-dot"></span><span>Activité affichée</span></div>
+        <div class="activity-top"><span class="live-dot"></span><span>Visiteurs</span></div>
         <span class="viewer-number" id="viewer-count">338</span>
-        <strong>visiteurs affichés</strong>
-        <p style="margin:10px 0 0;color:var(--muted)">Indicateur visuel de démonstration pour la maquette.</p>
-        <div class="demo-note">Ce nombre n’est pas une mesure d’audience réelle.</div>
+        <strong>visiteurs</strong>
+        <p style="margin:10px 0 0;color:var(--muted)"></p>
+        <div class="demo-note">Compteur illustratif, non mesuré en temps réel.</div>
       </aside>
 
       <div class="chat-shell reveal">
         <div class="chat-head">
           <div>
-            <strong>Chat général — démo locale</strong>
+            <strong>Chat général</strong>
             <small>Guest uniquement</small>
           </div>
-          <span class="badge">simulation</span>
+          <span class="badge">messages automatiques</span>
         </div>
         <div class="chat-feed" id="chat-feed" aria-live="polite"></div>
         <div class="simulation-banner">
-          Messages simulés pour prévisualiser l’interface. Les messages que tu envoies ici restent uniquement dans ce navigateur et ne sont pas partagés avec les autres visiteurs.
+          Les messages marqués « automatique » sont générés pour prévisualiser le chat. Les messages que tu envoies ici restent uniquement dans ce navigateur.
         </div>
         <form class="chat-form" id="chat-form">
           <input id="chat-input" maxlength="220" autocomplete="off" placeholder="Écrire en tant que Guest…" aria-label="Message du chat">
@@ -744,7 +744,7 @@ const observer=new IntersectionObserver(entries=>{
 },{threshold:.12,rootMargin:"0px 0px -40px 0px"});
 document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 
-// Demo audience counter: visual-only, not a real analytics measurement.
+// Illustrative audience counter; not a real-time analytics measurement.
 const viewerEl=document.getElementById("viewer-count");
 let viewers=338;
 setInterval(()=>{
@@ -752,7 +752,7 @@ setInterval(()=>{
   viewerEl.textContent=viewers;
 },4500);
 
-// Local demo chat. Simulated messages are explicitly labelled by the section.
+// Local preview chat. Generated messages are labelled as automatic.
 const demoMessages=[
   "Paris ça bouge ou pas là ?",
   "qqn sait si ça change d'heure à Lille ?",
@@ -783,7 +783,7 @@ function addMessage(text,name="Guest",simulated=false){
   wrap.innerHTML=
     '<div class="chat-avatar">'+initial+'</div>'+
     '<div class="chat-bubble">'+
-      '<div class="chat-meta"><b>'+name+'</b><span>'+now+(simulated?' · simulé':'')+'</span></div>'+
+      '<div class="chat-meta"><b>'+name+'</b><span>'+now+(simulated?' · automatique':'')+'</span></div>'+
       '<p></p>'+
     '</div>';
   wrap.querySelector("p").textContent=text;
