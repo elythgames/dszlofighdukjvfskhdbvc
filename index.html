@@ -612,13 +612,13 @@ h2{
         <div class="chat-head">
           <div>
             <strong>Chat général</strong>
-            <small>Guest uniquement</small>
+            <small id="chat-status">Connexion…</small>
           </div>
-          <span class="badge">messages automatiques</span>
+          <span class="badge">éphémère</span>
         </div>
         <div class="chat-feed" id="chat-feed" aria-live="polite"></div>
         <div class="simulation-banner">
-          Les messages marqués « automatique » sont générés pour prévisualiser le chat. Les messages que tu envoies ici restent uniquement dans ce navigateur.
+          Sans compte ni inscription. Les messages ne sont pas archivés : seuls les visiteurs connectés au moment de l’envoi les reçoivent.
         </div>
         <form class="chat-form" id="chat-form">
           <input id="chat-input" maxlength="220" autocomplete="off" placeholder="Écrire en tant que Guest…" aria-label="Message du chat">
@@ -752,69 +752,122 @@ setInterval(()=>{
   viewerEl.textContent=viewers;
 },4500);
 
-// Local preview chat. Generated messages are labelled as automatic.
-const demoMessages=[
-  "Paris ça bouge ou pas là ?",
-  "qqn sait si ça change d'heure à Lille ?",
-  "César Baggio vous êtes là ?",
-  "j'arrive porte des postes dans 10min",
-  "on a besoin d'infos pour le métro svp",
-  "ça capte mal ici mdr",
-  "y'a du monde vers République ?",
-  "les gens de Lille vous passez par où ?",
-  "quelqu'un a une update côté Baggio ?",
-  "on reste ensemble surtout",
-  "Paris vous avez un point de rdv confirmé ?",
-  "j'ai plus beaucoup de batterie si qqn peut relayer",
-  "ça commence a arriver petit a petit",
-  "vous avez vu si les bus circulent encore ?",
-  "faites tourner les infos mais vérifiez avant svp"
-];
+// Public, anonymous, ephemeral realtime chat.
+// Cache:no means ntfy forwards the message to connected subscribers without storing it in message cache.
+const CHAT_TOPIC="athena2-general-7f2c9c8e6a4b41a9b86f0d8e3c29f731";
+const CHAT_BASE="https://ntfy.sh/"+CHAT_TOPIC;
 const chatFeed=document.getElementById("chat-feed");
 const chatForm=document.getElementById("chat-form");
 const chatInput=document.getElementById("chat-input");
-let guestId=Math.floor(100+Math.random()*900);
+const chatStatus=document.getElementById("chat-status");
 
-function addMessage(text,name="Guest",simulated=false){
+let guest=sessionStorage.getItem("athenaGuest");
+if(!guest){
+  const rand=crypto.getRandomValues(new Uint32Array(1))[0]%9000+1000;
+  guest="Guest-"+rand;
+  sessionStorage.setItem("athenaGuest",guest);
+}
+chatInput.placeholder="Écrire en tant que "+guest+"…";
+
+function addMessage(text,name,time){
   const wrap=document.createElement("div");
   wrap.className="chat-message";
-  const initial=(name.match(/\d+/)?.[0]||"G").slice(-2);
-  const now=new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
-  wrap.innerHTML=
-    '<div class="chat-avatar">'+initial+'</div>'+
-    '<div class="chat-bubble">'+
-      '<div class="chat-meta"><b>'+name+'</b><span>'+now+(simulated?' · automatique':'')+'</span></div>'+
-      '<p></p>'+
-    '</div>';
-  wrap.querySelector("p").textContent=text;
+  const digits=(name.match(/\d+/)?.[0]||"G").slice(-2);
+  const when=time
+    ? new Date(time*1000).toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"})
+    : new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+
+  const avatar=document.createElement("div");
+  avatar.className="chat-avatar";
+  avatar.textContent=digits;
+
+  const bubble=document.createElement("div");
+  bubble.className="chat-bubble";
+
+  const meta=document.createElement("div");
+  meta.className="chat-meta";
+  const user=document.createElement("b");
+  user.textContent=name;
+  const stamp=document.createElement("span");
+  stamp.textContent=when;
+  meta.append(user,stamp);
+
+  const p=document.createElement("p");
+  p.textContent=text;
+
+  bubble.append(meta,p);
+  wrap.append(avatar,bubble);
   chatFeed.appendChild(wrap);
-  while(chatFeed.children.length>24) chatFeed.removeChild(chatFeed.firstChild);
+
+  while(chatFeed.children.length>80){
+    chatFeed.removeChild(chatFeed.firstChild);
+  }
   chatFeed.scrollTop=chatFeed.scrollHeight;
 }
 
-[
-  "salut 👋",
-  "quelqu'un a des infos pour Lille ?",
-  "je check les infos locales avant de bouger"
-].forEach((m,i)=>setTimeout(()=>addMessage(m,"Guest-"+(204+i*37),true),400+i*500));
-
-function scheduleDemo(){
-  const delay=3000+Math.random()*2000;
-  setTimeout(()=>{
-    const msg=demoMessages[Math.floor(Math.random()*demoMessages.length)];
-    const id=Math.floor(100+Math.random()*900);
-    addMessage(msg,"Guest-"+id,true);
-    scheduleDemo();
-  },delay);
+function addSystem(text){
+  const wrap=document.createElement("div");
+  wrap.className="chat-message";
+  const bubble=document.createElement("div");
+  bubble.className="chat-bubble";
+  bubble.style.maxWidth="100%";
+  const p=document.createElement("p");
+  p.textContent=text;
+  p.style.color="#9ba7b7";
+  bubble.appendChild(p);
+  wrap.appendChild(bubble);
+  chatFeed.appendChild(wrap);
+  chatFeed.scrollTop=chatFeed.scrollHeight;
 }
-scheduleDemo();
 
-chatForm.addEventListener("submit",e=>{
+const stream=new EventSource(CHAT_BASE+"/sse");
+
+stream.addEventListener("open",()=>{
+  chatStatus.textContent="en ligne · "+guest;
+  addSystem("Chat connecté. Aucun historique n’est chargé.");
+});
+
+stream.addEventListener("error",()=>{
+  chatStatus.textContent="reconnexion…";
+});
+
+stream.onmessage=(event)=>{
+  try{
+    const packet=JSON.parse(event.data);
+    if(packet.event!=="message" || !packet.message) return;
+    const msg=JSON.parse(packet.message);
+    if(msg.v!==1 || typeof msg.text!=="string" || typeof msg.name!=="string") return;
+    const cleanText=msg.text.trim().slice(0,500);
+    const cleanName=msg.name.trim().slice(0,32);
+    if(!cleanText || !cleanName) return;
+    addMessage(cleanText,cleanName,packet.time);
+  }catch(_){}
+};
+
+chatForm.addEventListener("submit",async e=>{
   e.preventDefault();
-  const value=chatInput.value.trim();
-  if(!value)return;
-  addMessage(value,"Guest-"+guestId,false);
-  chatInput.value="";
+  const value=chatInput.value.trim().slice(0,500);
+  if(!value) return;
+
+  chatInput.disabled=true;
+  try{
+    const payload=JSON.stringify({v:1,name:guest,text:value});
+    const response=await fetch(CHAT_BASE,{
+      method:"POST",
+      headers:{
+        "Content-Type":"text/plain;charset=UTF-8",
+        "Cache":"no"
+      },
+      body:payload
+    });
+    if(!response.ok) throw new Error("send failed");
+    chatInput.value="";
+  }catch(_){
+    addSystem("Message non envoyé. Réessaie dans quelques secondes.");
+  }finally{
+    chatInput.disabled=false;
+    chatInput.focus();
+  }
 });
 </script>
 </body>
