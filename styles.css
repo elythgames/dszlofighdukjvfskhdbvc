@@ -35,7 +35,7 @@ img { max-width: 100%; display: block; }
   background:
     linear-gradient(180deg, rgba(12,12,15,.35), rgba(12,12,15,.88)),
     linear-gradient(120deg, rgba(230,57,70,.16), rgba(58,134,255,.08)),
-    url('hero-athena2.png') center/cover no-repeat;
+    url('hero-athena2.svg') center/cover no-repeat;
   display: flex;
   flex-direction: column;
 }
