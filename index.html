@@ -546,6 +546,163 @@ h2{
   .chat-form button{height:44px}
 }
 
+
+/* Prefectural order */
+.order-section{
+  padding:72px 0 86px;
+  background:
+    radial-gradient(circle at 8% 20%,rgba(239,51,64,.12),transparent 26%),
+    linear-gradient(180deg,#0b0e14,#10141c);
+  border-top:1px solid rgba(239,51,64,.22);
+  border-bottom:1px solid rgba(239,51,64,.16);
+}
+.order-alert{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  width:max-content;
+  max-width:100%;
+  padding:8px 12px;
+  margin-bottom:18px;
+  border-radius:999px;
+  background:rgba(239,51,64,.12);
+  border:1px solid rgba(239,51,64,.32);
+  color:#ffd9dc;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.order-alert::before{
+  content:"";
+  width:9px;height:9px;border-radius:50%;
+  background:#ff4754;
+  box-shadow:0 0 18px rgba(255,71,84,.75);
+}
+.order-layout{
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);
+  gap:22px;
+  align-items:start;
+}
+.order-image-card,.order-copy,.order-list,.legal-context{
+  border:1px solid var(--line);
+  border-radius:24px;
+  background:rgba(20,25,35,.96);
+  box-shadow:0 18px 55px rgba(0,0,0,.24);
+}
+.order-image-card{
+  padding:12px;
+  position:sticky;
+  top:16px;
+}
+.order-image-card img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:16px;
+  background:#fff;
+}
+.order-image-card figcaption{
+  padding:11px 5px 3px;
+  color:#96a2b2;
+  font-size:11px;
+}
+.order-copy{padding:26px}
+.order-copy h3,.order-list h3,.legal-context h3{
+  margin:0 0 12px;
+  color:#fff;
+  font-size:22px;
+}
+.order-copy p,.legal-context p{
+  margin:0 0 13px;
+  color:var(--muted);
+}
+.order-copy strong,.legal-context strong{color:#fff}
+.order-key{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin:18px 0 20px;
+}
+.order-key div{
+  padding:14px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  background:#0e131b;
+}
+.order-key small{
+  display:block;
+  color:#8f9aaa;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:10px;
+  margin-bottom:4px;
+}
+.order-key b{color:#fff;font-size:15px}
+.order-source{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:42px;
+  padding:0 14px;
+  border-radius:12px;
+  background:#fff;
+  color:#10131a!important;
+  font-weight:850;
+  font-size:13px;
+}
+.order-source:hover{transform:translateY(-1px)}
+.order-list{
+  margin-top:18px;
+  padding:24px;
+}
+.school-list{
+  columns:2 280px;
+  column-gap:28px;
+  margin:0;
+  padding-left:20px;
+}
+.school-list li{
+  break-inside:avoid;
+  color:#d6dbe4;
+  margin:0 0 7px;
+  padding-left:3px;
+  font-size:14px;
+}
+.legal-context{
+  margin-top:18px;
+  padding:24px;
+  border-color:rgba(95,143,201,.25);
+  background:linear-gradient(180deg,rgba(27,37,51,.98),rgba(16,22,31,.98));
+}
+.legal-context .legal-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.legal-context .legal-box{
+  padding:16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.035);
+  border:1px solid rgba(255,255,255,.07);
+}
+.legal-context .legal-box b{
+  display:block;
+  margin-bottom:6px;
+}
+@media(max-width:900px){
+  .order-layout{grid-template-columns:1fr}
+  .order-image-card{position:relative;top:auto}
+  .order-key{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .order-section{padding:54px 0 62px}
+  .order-copy,.order-list,.legal-context{padding:18px}
+  .school-list{columns:1}
+  .legal-context .legal-row{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -559,6 +716,7 @@ h2{
     <nav>
       <a href="#top" class="logo">ATHENA <b>2</b></a>
       <div class="navlinks">
+        <a href="#arrete">Arrêté</a>
         <a href="#rdv">Rendez-vous</a>
         <a href="#revendications">Revendications</a>
         <a href="#securite">Sécurité</a>
@@ -626,6 +784,113 @@ h2{
           <button type="submit">Envoyer</button>
         </form>
       </div>
+    </div>
+  </section>
+
+
+  <section class="order-section" id="arrete">
+    <div class="container">
+      <div class="order-alert reveal">Mesure préfectorale en vigueur</div>
+      <div class="section-head reveal">
+        <p class="kicker">Nord · 2–3 octobre 2026</p>
+        <h2>Interdiction de rassemblements autour de plusieurs lycées</h2>
+        <p>
+          Un arrêté préfectoral interdit temporairement les manifestations et rassemblements de voie publique
+          dans un rayon de 100 mètres autour des établissements listés ci-dessous.
+        </p>
+      </div>
+
+      <div class="order-layout">
+        <figure class="order-image-card reveal">
+          <img src="arrete-prefectoral-lycees-nord.jpg" width="1080" height="1020" loading="lazy"
+               alt="Extrait de l'arrêté préfectoral interdisant les manifestations et rassemblements dans un rayon de 100 mètres autour de plusieurs lycées du Nord.">
+          <figcaption>Document transmis le 2 octobre 2026. La préfecture du Nord confirme la mesure sur son site officiel.</figcaption>
+        </figure>
+
+        <div>
+          <article class="order-copy reveal">
+            <h3>Ce que dit l’arrêté</h3>
+            <p>
+              <strong>Article 1er :</strong> les manifestations et rassemblements de voie publique sont interdits,
+              à compter de la publication de l’arrêté et jusqu’au <strong>samedi 3 octobre 2026 à 14 h</strong>,
+              dans un périmètre de <strong>100 mètres</strong> autour des établissements concernés.
+            </p>
+            <p>
+              <strong>Article 2 :</strong> tout contrevenant s’expose aux sanctions prévues par les lois et règlements en vigueur.
+            </p>
+
+            <div class="order-key">
+              <div><small>Périmètre</small><b>100 mètres</b></div>
+              <div><small>Fin annoncée</small><b>3 oct. · 14 h</b></div>
+              <div><small>Mesure</small><b>Locale et temporaire</b></div>
+            </div>
+
+            <p>
+              <strong>À retenir :</strong> le texte visible n’interdit pas toute manifestation à Lille ou dans le département.
+              Il vise les manifestations et rassemblements de voie publique dans ces périmètres précis.
+            </p>
+
+            <a class="order-source" href="https://www.nord.gouv.fr/Actualites/Actualites/Mouvements-lyceens-Mesures-prefectorales"
+               target="_blank" rel="noopener noreferrer">Voir la confirmation de la préfecture</a>
+          </article>
+
+          <article class="legal-context reveal">
+            <h3>Pourquoi cette mesure fait débat</h3>
+            <div class="legal-row">
+              <div class="legal-box">
+                <b>Liberté de manifester</b>
+                <p>Le Conseil d’État la qualifie de liberté fondamentale. Une restriction doit être conciliée avec le maintien de l’ordre public.</p>
+              </div>
+              <div class="legal-box">
+                <b>Justification de la préfecture</b>
+                <p>La préfecture invoque les perturbations et dégradations constatées ainsi que les risques identifiés autour de certains établissements.</p>
+              </div>
+            </div>
+            <p style="margin-top:14px">
+              La question juridique n’est donc pas de savoir si la liberté de manifester existe, mais si la restriction décidée
+              est nécessaire, adaptée et proportionnée au risque invoqué. Une interdiction administrative peut être contestée devant le juge.
+            </p>
+          </article>
+        </div>
+      </div>
+
+      <article class="order-list reveal">
+        <h3>Établissements mentionnés dans le document</h3>
+        <ul class="school-list">
+          <li>Lycée international Montebello — Lille</li>
+          <li>Lycée César Baggio — Lille</li>
+          <li>Lycée Aimé Césaire — Lille</li>
+          <li>Lycée Beaupré — Haubourdin</li>
+          <li>Lycée Charles Baudelaire — Roubaix</li>
+          <li>Lycée Jean Moulin — Roubaix</li>
+          <li>Lycée privé Saint-Rémi — Roubaix</li>
+          <li>Lycée privé Saint-Martin — Roubaix</li>
+          <li>Lycée privé Saint-François-d’Assise — Roubaix</li>
+          <li>Lycée privé Léonard de Vinci — Roubaix</li>
+          <li>Lycée professionnel Louis Loucheur — Roubaix</li>
+          <li>Lycée Jean Rostand — Roubaix</li>
+          <li>Lycée Maxence Van der Meersch — Roubaix</li>
+          <li>Lycée Les Hauts de Flandre — Seclin</li>
+          <li>Lycée Colbert — Tourcoing</li>
+          <li>Lycée Sévigné — Tourcoing</li>
+          <li>Lycée Sonia Delaunay — Lille (Lomme)</li>
+          <li>Lycée Jean Prouvé — Lille (Lomme)</li>
+          <li>Lycée Yves Kernanec — Marcq-en-Barœul</li>
+          <li>Lycée Gaston Berger — Lille</li>
+          <li>Lycée Faidherbe — Lille</li>
+          <li>Lycée Fénelon — Lille</li>
+          <li>Lycée Pasteur — Lille</li>
+          <li>Lycée Gustave Eiffel — Armentières</li>
+          <li>Lycée Paul Hazard — Armentières</li>
+          <li>Lycée Guy Debeyre — Dunkerque</li>
+          <li>Lycée Elisa Lemonnier — Douai</li>
+          <li>Lycée Arthur Rimbaud — Sin-le-Noble</li>
+          <li>Lycée Pierre-Joseph Laurent — Aniche</li>
+          <li>Lycée Jules Mousseron — Denain</li>
+          <li>Lycée Alfred Kastler — Denain</li>
+          <li>Lycée Émile Zola — Wattrelos</li>
+        </ul>
+      </article>
     </div>
   </section>
 
