@@ -703,6 +703,148 @@ h2{
   .legal-context .legal-row{grid-template-columns:1fr}
 }
 
+
+/* City schedules + Telegram */
+.city-card{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.city-card .today-line{
+  font-size:15px;
+  font-weight:850;
+  color:#fff;
+}
+.city-card .today-line span{
+  color:#ff9da5;
+}
+.city-more{
+  margin-top:auto;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding-top:12px;
+}
+.city-more summary{
+  list-style:none;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  color:#fff;
+  font-size:13px;
+  font-weight:850;
+  user-select:none;
+}
+.city-more summary::-webkit-details-marker{display:none}
+.city-more summary::after{
+  content:"+";
+  width:24px;height:24px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  background:rgba(255,255,255,.07);
+  color:#fff;
+  transition:transform .22s ease;
+}
+.city-more[open] summary::after{transform:rotate(45deg)}
+.city-days{
+  display:grid;
+  gap:8px;
+  margin-top:12px;
+}
+.city-day{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:9px 10px;
+  border-radius:12px;
+  background:#0f141c;
+  border:1px solid rgba(255,255,255,.06);
+  font-size:12px;
+}
+.city-day b{color:#fff}
+.city-day span{color:#96a2b2;text-align:right}
+.city-propose{
+  display:inline-flex;
+  margin-top:11px;
+  font-size:12px;
+  font-weight:850;
+  color:#8ccfff!important;
+}
+.rdv-source-note{
+  margin:14px 0 0;
+  color:#8e99a8;
+  font-size:12px;
+}
+.telegram-panel{
+  margin-top:26px;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:18px;
+  align-items:center;
+  padding:22px;
+  border-radius:24px;
+  border:1px solid rgba(52,170,223,.30);
+  background:
+    radial-gradient(circle at 0 50%,rgba(52,170,223,.13),transparent 34%),
+    linear-gradient(180deg,#141c27,#101720);
+  box-shadow:0 16px 55px rgba(0,0,0,.25);
+}
+.telegram-logo{
+  width:64px;height:64px;
+  border-radius:50%;
+  background:#2AABEE;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 28px rgba(42,171,238,.25);
+}
+.telegram-logo svg{width:38px;height:38px;display:block}
+.telegram-copy h3{
+  margin:0 0 5px;
+  color:#fff;
+  font-size:20px;
+}
+.telegram-copy p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+.telegram-actions{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  min-width:190px;
+}
+.telegram-join,.telegram-install{
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:13px;
+  padding:0 15px;
+  font-size:13px;
+  font-weight:900;
+}
+.telegram-join{
+  background:#2AABEE;
+  color:#fff!important;
+}
+.telegram-install{
+  border:1px solid rgba(255,255,255,.10);
+  background:rgba(255,255,255,.04);
+  color:#fff!important;
+}
+.telegram-security{
+  grid-column:2 / 4;
+  margin:0;
+  padding-top:2px;
+  color:#8f9aaa;
+  font-size:11px;
+}
+@media(max-width:760px){
+  .telegram-panel{grid-template-columns:auto 1fr}
+  .telegram-actions{grid-column:1 / -1;min-width:0}
+  .telegram-security{grid-column:1 / -1}
+}
+
 </style>
 </head>
 <body>
@@ -740,7 +882,7 @@ h2{
     <div class="container quick-grid">
       <div class="quick-card reveal">
         <span class="label">Lille</span>
-        <strong>Porte des Postes · 14h</strong>
+        <strong>Porte des Postes · 17h</strong>
         <p>Point de rendez-vous indiqué pour aujourd’hui.</p>
       </div>
       <div class="quick-card reveal">
@@ -905,21 +1047,134 @@ h2{
         <div class="feature-main">
           <span class="badge">Point principal</span>
           <h3>Lille</h3>
-          <p class="where">Porte des Postes · 14h</p>
-          <p>Rassemblement indiqué aujourd’hui à Lille, avec appel aux lycéennes, lycéens, étudiant·es, enseignant·es et soutiens.</p>
+          <p class="where">Porte des Postes · 17h</p>
+          <p>Rendez-vous communiqué par l’organisateur du site pour aujourd’hui à Lille.</p>
         </div>
         <div class="feature-side">
           <p><strong>À prévoir :</strong> eau, téléphone chargé, point de contact et trajet retour.</p>
           <p><strong>À vérifier :</strong> les éventuelles modifications de lieu ou d’horaire avant le départ.</p>
         </div>
       </div>
+      
+      <p class="rdv-source-note">
+        Horaires et points ci-dessous communiqués par l’organisateur du site. Ils ne constituent pas une annonce officielle ; vérifiez les éventuelles mises à jour avant de vous déplacer.
+      </p>
+
       <div class="city-grid">
-        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Paris</h3><p>Horaire exact à confirmer localement.</p></article>
-        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Lyon</h3><p>Actions et rassemblements signalés, détails à confirmer localement.</p></article>
-        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Marseille</h3><p>Ville citée parmi les lieux touchés par le mouvement.</p></article>
-        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Strasbourg</h3><p>Blocages et actions signalés.</p></article>
-        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Rennes</h3><p>Mobilisations étudiantes et lycéennes signalées.</p></article>
-        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Amiens</h3><p>Présence signalée dans le mouvement national.</p></article>
+        <article class="card city-card reveal">
+          <span class="mini">Aujourd’hui</span>
+          <h3>Paris</h3>
+          <p class="today-line">Place de la République · <span>17h</span></p>
+          <p>Point proposé par l’organisateur du site.</p>
+          <details class="city-more">
+            <summary>Voir les prochains jours</summary>
+            <div class="city-days">
+              <div class="city-day"><b>Sam. 3 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Dim. 4 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Lun. 5 oct.</b><span>Rien de confirmé</span></div>
+            </div>
+            <a class="city-propose" href="https://t.me/+JlEL6e97yLM0ODhk" target="_blank" rel="noopener noreferrer">Proposer un lieu sur Telegram →</a>
+          </details>
+        </article>
+
+        <article class="card city-card reveal">
+          <span class="mini">Aujourd’hui</span>
+          <h3>Lyon</h3>
+          <p class="today-line">Place Bellecour · <span>17h</span></p>
+          <p>Point proposé par l’organisateur du site.</p>
+          <details class="city-more">
+            <summary>Voir les prochains jours</summary>
+            <div class="city-days">
+              <div class="city-day"><b>Sam. 3 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Dim. 4 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Lun. 5 oct.</b><span>Rien de confirmé</span></div>
+            </div>
+            <a class="city-propose" href="https://t.me/+JlEL6e97yLM0ODhk" target="_blank" rel="noopener noreferrer">Proposer un lieu sur Telegram →</a>
+          </details>
+        </article>
+
+        <article class="card city-card reveal">
+          <span class="mini">Aujourd’hui</span>
+          <h3>Marseille</h3>
+          <p class="today-line">Lieu à confirmer · <span>17h</span></p>
+          <p>Les propositions de lieu peuvent être envoyées sur le groupe.</p>
+          <details class="city-more">
+            <summary>Voir les prochains jours</summary>
+            <div class="city-days">
+              <div class="city-day"><b>Sam. 3 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Dim. 4 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Lun. 5 oct.</b><span>Rien de confirmé</span></div>
+            </div>
+            <a class="city-propose" href="https://t.me/+JlEL6e97yLM0ODhk" target="_blank" rel="noopener noreferrer">Proposer un lieu sur Telegram →</a>
+          </details>
+        </article>
+
+        <article class="card city-card reveal">
+          <span class="mini">Aujourd’hui</span>
+          <h3>Strasbourg</h3>
+          <p class="today-line">Lieu à confirmer · <span>17h</span></p>
+          <p>Les propositions de lieu peuvent être envoyées sur le groupe.</p>
+          <details class="city-more">
+            <summary>Voir les prochains jours</summary>
+            <div class="city-days">
+              <div class="city-day"><b>Sam. 3 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Dim. 4 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Lun. 5 oct.</b><span>Rien de confirmé</span></div>
+            </div>
+            <a class="city-propose" href="https://t.me/+JlEL6e97yLM0ODhk" target="_blank" rel="noopener noreferrer">Proposer un lieu sur Telegram →</a>
+          </details>
+        </article>
+
+        <article class="card city-card reveal">
+          <span class="mini">Aujourd’hui</span>
+          <h3>Rennes</h3>
+          <p class="today-line">Lieu à confirmer · <span>17h</span></p>
+          <p>Les propositions de lieu peuvent être envoyées sur le groupe.</p>
+          <details class="city-more">
+            <summary>Voir les prochains jours</summary>
+            <div class="city-days">
+              <div class="city-day"><b>Sam. 3 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Dim. 4 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Lun. 5 oct.</b><span>Rien de confirmé</span></div>
+            </div>
+            <a class="city-propose" href="https://t.me/+JlEL6e97yLM0ODhk" target="_blank" rel="noopener noreferrer">Proposer un lieu sur Telegram →</a>
+          </details>
+        </article>
+
+        <article class="card city-card reveal">
+          <span class="mini">Aujourd’hui</span>
+          <h3>Amiens</h3>
+          <p class="today-line">Lieu à confirmer · <span>17h</span></p>
+          <p>Les propositions de lieu peuvent être envoyées sur le groupe.</p>
+          <details class="city-more">
+            <summary>Voir les prochains jours</summary>
+            <div class="city-days">
+              <div class="city-day"><b>Sam. 3 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Dim. 4 oct.</b><span>Rien de confirmé</span></div>
+              <div class="city-day"><b>Lun. 5 oct.</b><span>Rien de confirmé</span></div>
+            </div>
+            <a class="city-propose" href="https://t.me/+JlEL6e97yLM0ODhk" target="_blank" rel="noopener noreferrer">Proposer un lieu sur Telegram →</a>
+          </details>
+        </article>
+      </div>
+
+      <div class="telegram-panel reveal">
+        <div class="telegram-logo" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img">
+            <path fill="#fff" d="M52.7 12.3 7.8 29.6c-3.1 1.2-3 2.9-.6 3.6l11.5 3.6 4.4 13.7c.6 1.7.3 2.4 2.1 2.4 1.4 0 2.1-.6 2.9-1.4l5.6-5.4 11.6 8.6c2.1 1.2 3.7.6 4.2-2l7.6-35.7c.8-3.1-1.2-4.5-4.4-3.7ZM22.1 36l25.9-16.3c1.3-.8 2.4-.4 1.5.4L28.2 39.3l-.8 8.3-5.3-11.6Z"/>
+          </svg>
+        </div>
+        <div class="telegram-copy">
+          <h3>Proposer une ville, un lieu ou un horaire</h3>
+          <p>Le groupe Telegram sert à discuter des prochains rendez-vous et à transmettre des propositions locales.</p>
+        </div>
+        <div class="telegram-actions">
+          <a class="telegram-join" href="https://t.me/+JlEL6e97yLM0ODhk" target="_blank" rel="noopener noreferrer">Rejoindre le groupe</a>
+          <a class="telegram-install" href="https://telegram.org/apps" target="_blank" rel="noopener noreferrer">Installer Telegram</a>
+        </div>
+        <p class="telegram-security">
+          Sécurité : les groupes Telegram ordinaires sont des « Cloud Chats » chiffrés entre l’application et les serveurs Telegram, mais ils ne sont pas chiffrés de bout en bout. Évitez d’y publier des informations sensibles.
+        </p>
       </div>
     </div>
   </section>
