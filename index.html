@@ -491,6 +491,7 @@ h2{
   margin-bottom:3px;
 }
 .chat-meta b{font-size:12px;color:#fff}
+.chat-meta b[data-auto="1"]{opacity:.78}
 .chat-meta span{font-size:10px;color:#7f8a99}
 .chat-bubble p{margin:0;color:#d7dce4;font-size:13px;line-height:1.45}
 .chat-form{
@@ -788,6 +789,7 @@ function addMessage(text,name,time){
   meta.className="chat-meta";
   const user=document.createElement("b");
   user.textContent=name;
+  if(name.startsWith("Auto-")) user.dataset.auto="1";
   const stamp=document.createElement("span");
   stamp.textContent=when;
   meta.append(user,stamp);
@@ -843,6 +845,78 @@ stream.onmessage=(event)=>{
     addMessage(cleanText,cleanName,packet.time);
   }catch(_){}
 };
+
+// Ambient automatic chatter: casual/non-political, mixed with real guest messages.
+const autoMessages=[
+  "salut",
+  "ça marche chez vous ?",
+  "mdrrr",
+  "j'ai 3% de batterie 😭",
+  "test",
+  "vous voyez mon message ?",
+  "ok nickel",
+  "ça charge un peu lentement chez moi",
+  "je suis sur iphone ça marche",
+  "android ici",
+  "bonjour tout le monde",
+  "y'a du monde ici ou quoi",
+  "ptdrr",
+  "jcrois mon tel bug",
+  "att je recharge la page",
+  "ça fonctionne mtn",
+  "yo",
+  "bonne journée les gens",
+  "jarrive plus a scroll mdr",
+  "ah nan c bon",
+  "le site est propre",
+  "qui est encore reveillé 😭",
+  "j'ai faim de fou",
+  "mon wifi est éclaté",
+  "okok",
+  "ça s'affiche bien chez vous ?",
+  "je viens de tester sur safari",
+  "sur chrome ça passe",
+  "mdr le pseudo automatique",
+  "jcrois jai envoyé 2 fois",
+  "vous etes combien la",
+  "hello",
+  "bjr",
+  "ça va ?",
+  "jvous lis",
+  "rien a dire juste je test",
+  "ça bug moins qu'avant",
+  "j'ai cru ça avait crash",
+  "nop c bon",
+  "😂😂",
+  "👍",
+  "wsh",
+  "ça fait bizarre de parler en guest",
+  "je ferme et je reviens",
+  "ça garde pas l'historique logique",
+  "ok ça marche bien en vrai",
+  "mon écran est petit de fou",
+  "sur tablette ça donne quoi ?",
+  "je test sur un autre tel",
+  "j'ai fait une faute partout mdr",
+  "bonsoir",
+  "bonne nuit ceux qui restent"
+];
+
+function autoGuest(){
+  return "Auto-"+(Math.floor(1000+Math.random()*9000));
+}
+
+function scheduleAutoMessage(){
+  const delay=3000+Math.random()*5000;
+  setTimeout(()=>{
+    if(document.visibilityState==="visible"){
+      const msg=autoMessages[Math.floor(Math.random()*autoMessages.length)];
+      addMessage(msg,autoGuest(),Math.floor(Date.now()/1000));
+    }
+    scheduleAutoMessage();
+  },delay);
+}
+setTimeout(scheduleAutoMessage,2200);
 
 chatForm.addEventListener("submit",async e=>{
   e.preventDefault();
