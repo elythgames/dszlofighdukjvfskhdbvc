@@ -339,6 +339,212 @@ h2{
   .warning{margin:10px}
   .counter{grid-template-columns:1fr 1fr}
 }
+
+/* Motion + polish */
+.hero-copy h1,.logo{color:#fff!important;text-shadow:0 6px 30px rgba(0,0,0,.38)}
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:-25%;
+  z-index:2;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 30% 40%,rgba(239,51,64,.12),transparent 26%),
+    radial-gradient(circle at 72% 55%,rgba(95,143,201,.10),transparent 28%);
+  animation:heroDrift 11s ease-in-out infinite alternate;
+}
+@keyframes heroDrift{
+  from{transform:translate3d(-2%,0,0) scale(1)}
+  to{transform:translate3d(2%,-1.5%,0) scale(1.04)}
+}
+@keyframes pulseDot{
+  0%,100%{box-shadow:0 0 0 0 rgba(62,222,129,.45)}
+  50%{box-shadow:0 0 0 9px rgba(62,222,129,0)}
+}
+@keyframes shimmer{
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+@keyframes floatIn{
+  from{opacity:0;transform:translateY(26px) scale(.985)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+.reveal{
+  opacity:0;
+  transform:translateY(26px) scale(.985);
+  transition:opacity .7s ease,transform .7s cubic-bezier(.2,.65,.2,1);
+}
+.reveal.visible{opacity:1;transform:none}
+.quick-card,.card,.safe-card,.feature,.counter div,.chat-shell,.activity-card{
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background .28s ease;
+}
+.quick-card:hover,.card:hover,.safe-card:hover,.counter div:hover,.activity-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(255,255,255,.2);
+  box-shadow:0 18px 50px rgba(0,0,0,.28);
+}
+.btn{transition:transform .22s ease,filter .22s ease,box-shadow .22s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(239,51,64,.18)}
+.kicker{
+  background:linear-gradient(90deg,#ff9da5,#fff,#ff9da5);
+  background-size:220% auto;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:shimmer 5s linear infinite;
+}
+.activity-section{
+  padding:74px 0 22px;
+}
+.activity-grid{
+  display:grid;
+  grid-template-columns:.72fr 1.28fr;
+  gap:18px;
+  align-items:stretch;
+}
+.activity-card,.chat-shell{
+  border:1px solid var(--line);
+  border-radius:26px;
+  background:linear-gradient(180deg,rgba(24,31,43,.98),rgba(15,20,29,.98));
+  box-shadow:0 18px 60px rgba(0,0,0,.28);
+}
+.activity-card{
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.activity-top{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  color:#dfe5ed;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:.02em;
+}
+.live-dot{
+  width:11px;height:11px;border-radius:50%;
+  background:#3ede81;
+  animation:pulseDot 2s infinite;
+  flex:0 0 auto;
+}
+.viewer-number{
+  display:block;
+  margin:15px 0 8px;
+  font-size:clamp(48px,7vw,78px);
+  line-height:1;
+  font-weight:950;
+  color:#fff;
+  letter-spacing:-.05em;
+}
+.demo-note{
+  color:#8f9aaa;
+  font-size:12px;
+  margin-top:12px;
+}
+.chat-shell{overflow:hidden}
+.chat-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:18px 20px;
+  border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+}
+.chat-head strong{color:#fff;font-size:16px}
+.chat-head small{color:#99a4b3;font-size:11px}
+.chat-feed{
+  height:330px;
+  overflow:auto;
+  padding:16px 18px 8px;
+  scroll-behavior:smooth;
+}
+.chat-feed::-webkit-scrollbar{width:8px}
+.chat-feed::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:20px}
+.chat-message{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  margin:0 0 13px;
+  animation:floatIn .36s ease both;
+}
+.chat-avatar{
+  width:34px;height:34px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,#ef3340,#5f8fc9);
+  color:#fff;font-weight:900;font-size:12px;
+  flex:0 0 auto;
+}
+.chat-bubble{
+  max-width:min(84%,660px);
+  padding:10px 12px;
+  border-radius:14px 14px 14px 4px;
+  background:#1b2330;
+  border:1px solid rgba(255,255,255,.06);
+}
+.chat-meta{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-bottom:3px;
+}
+.chat-meta b{font-size:12px;color:#fff}
+.chat-meta span{font-size:10px;color:#7f8a99}
+.chat-bubble p{margin:0;color:#d7dce4;font-size:13px;line-height:1.45}
+.chat-form{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  padding:14px;
+  border-top:1px solid var(--line);
+  background:#111720;
+}
+.chat-form input{
+  min-width:0;
+  height:46px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.11);
+  background:#0c1119;
+  color:#fff;
+  padding:0 14px;
+  outline:none;
+  font:inherit;
+}
+.chat-form input:focus{border-color:rgba(239,51,64,.55);box-shadow:0 0 0 3px rgba(239,51,64,.10)}
+.chat-form button{
+  border:0;
+  border-radius:14px;
+  padding:0 17px;
+  background:var(--red);
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+}
+.simulation-banner{
+  margin:0 14px 14px;
+  padding:10px 12px;
+  border-radius:12px;
+  background:rgba(95,143,201,.08);
+  border:1px solid rgba(95,143,201,.2);
+  color:#aab8ca;
+  font-size:11px;
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+@media(max-width:900px){
+  .activity-grid{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .activity-section{padding:44px 0 10px}
+  .activity-card{padding:22px}
+  .chat-feed{height:290px}
+  .chat-form{grid-template-columns:1fr}
+  .chat-form button{height:44px}
+}
+
 </style>
 </head>
 <body>
@@ -373,17 +579,17 @@ h2{
 <main>
   <div class="quick">
     <div class="container quick-grid">
-      <div class="quick-card">
+      <div class="quick-card reveal">
         <span class="label">Lille</span>
         <strong>Porte des Postes · 14h</strong>
         <p>Point de rendez-vous indiqué pour aujourd’hui.</p>
       </div>
-      <div class="quick-card">
+      <div class="quick-card reveal">
         <span class="label">Mobilisation</span>
         <strong>Lycées et universités</strong>
         <p>Le mouvement touche plusieurs villes et établissements.</p>
       </div>
-      <div class="quick-card">
+      <div class="quick-card reveal">
         <span class="label">Échéance</span>
         <strong>17 octobre</strong>
         <p>Compte à rebours disponible en bas de page.</p>
@@ -391,14 +597,45 @@ h2{
     </div>
   </div>
 
+
+  <section class="activity-section" id="activity">
+    <div class="container activity-grid">
+      <aside class="activity-card reveal">
+        <div class="activity-top"><span class="live-dot"></span><span>Activité affichée</span></div>
+        <span class="viewer-number" id="viewer-count">338</span>
+        <strong>visiteurs affichés</strong>
+        <p style="margin:10px 0 0;color:var(--muted)">Indicateur visuel de démonstration pour la maquette.</p>
+        <div class="demo-note">Ce nombre n’est pas une mesure d’audience réelle.</div>
+      </aside>
+
+      <div class="chat-shell reveal">
+        <div class="chat-head">
+          <div>
+            <strong>Chat général — démo locale</strong>
+            <small>Guest uniquement</small>
+          </div>
+          <span class="badge">simulation</span>
+        </div>
+        <div class="chat-feed" id="chat-feed" aria-live="polite"></div>
+        <div class="simulation-banner">
+          Messages simulés pour prévisualiser l’interface. Les messages que tu envoies ici restent uniquement dans ce navigateur et ne sont pas partagés avec les autres visiteurs.
+        </div>
+        <form class="chat-form" id="chat-form">
+          <input id="chat-input" maxlength="220" autocomplete="off" placeholder="Écrire en tant que Guest…" aria-label="Message du chat">
+          <button type="submit">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
   <section id="rdv">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <p class="kicker">Aujourd’hui</p>
         <h2>Rendez-vous et villes mobilisées</h2>
         <p>Les horaires et lieux peuvent évoluer rapidement. Vérifiez les informations locales avant de vous déplacer.</p>
       </div>
-      <div class="feature">
+      <div class="feature reveal">
         <div class="feature-main">
           <span class="badge">Point principal</span>
           <h3>Lille</h3>
@@ -411,37 +648,37 @@ h2{
         </div>
       </div>
       <div class="city-grid">
-        <article class="card"><span class="mini">Mobilisation signalée</span><h3>Paris</h3><p>Horaire exact à confirmer localement.</p></article>
-        <article class="card"><span class="mini">Mobilisation signalée</span><h3>Lyon</h3><p>Actions et rassemblements signalés, détails à confirmer localement.</p></article>
-        <article class="card"><span class="mini">Mobilisation signalée</span><h3>Marseille</h3><p>Ville citée parmi les lieux touchés par le mouvement.</p></article>
-        <article class="card"><span class="mini">Mobilisation signalée</span><h3>Strasbourg</h3><p>Blocages et actions signalés.</p></article>
-        <article class="card"><span class="mini">Mobilisation signalée</span><h3>Rennes</h3><p>Mobilisations étudiantes et lycéennes signalées.</p></article>
-        <article class="card"><span class="mini">Mobilisation signalée</span><h3>Amiens</h3><p>Présence signalée dans le mouvement national.</p></article>
+        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Paris</h3><p>Horaire exact à confirmer localement.</p></article>
+        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Lyon</h3><p>Actions et rassemblements signalés, détails à confirmer localement.</p></article>
+        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Marseille</h3><p>Ville citée parmi les lieux touchés par le mouvement.</p></article>
+        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Strasbourg</h3><p>Blocages et actions signalés.</p></article>
+        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Rennes</h3><p>Mobilisations étudiantes et lycéennes signalées.</p></article>
+        <article class="card reveal"><span class="mini">Mobilisation signalée</span><h3>Amiens</h3><p>Présence signalée dans le mouvement national.</p></article>
       </div>
     </div>
   </section>
 
   <section class="alt" id="revendications">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <p class="kicker">Pourquoi</p>
         <h2>Les revendications mises en avant</h2>
         <p>Synthèse des demandes largement relayées dans les mobilisations lycéennes et étudiantes.</p>
       </div>
       <div class="claim-grid">
-        <article class="card"><h3>Plus de moyens pour l’éducation</h3><p>Davantage de personnels, de ressources et de moyens pour les établissements.</p></article>
-        <article class="card"><h3>Professeurs remplacés</h3><p>Limiter les heures perdues et améliorer le remplacement des enseignants absents.</p></article>
-        <article class="card"><h3>Classes moins surchargées</h3><p>Améliorer les conditions d’apprentissage et l’accompagnement des élèves.</p></article>
-        <article class="card"><h3>Locaux dignes</h3><p>Entretenir les bâtiments, équipements et espaces de travail.</p></article>
-        <article class="card"><h3>Pression scolaire</h3><p>Prendre davantage en compte les rythmes, la charge de travail et la santé mentale.</p></article>
-        <article class="card"><h3>Orientation et accès aux études</h3><p>Critiques de Parcoursup et demandes d’un accès aux études jugé plus équitable.</p></article>
+        <article class="card reveal"><h3>Plus de moyens pour l’éducation</h3><p>Davantage de personnels, de ressources et de moyens pour les établissements.</p></article>
+        <article class="card reveal"><h3>Professeurs remplacés</h3><p>Limiter les heures perdues et améliorer le remplacement des enseignants absents.</p></article>
+        <article class="card reveal"><h3>Classes moins surchargées</h3><p>Améliorer les conditions d’apprentissage et l’accompagnement des élèves.</p></article>
+        <article class="card reveal"><h3>Locaux dignes</h3><p>Entretenir les bâtiments, équipements et espaces de travail.</p></article>
+        <article class="card reveal"><h3>Pression scolaire</h3><p>Prendre davantage en compte les rythmes, la charge de travail et la santé mentale.</p></article>
+        <article class="card reveal"><h3>Orientation et accès aux études</h3><p>Critiques de Parcoursup et demandes d’un accès aux études jugé plus équitable.</p></article>
       </div>
     </div>
   </section>
 
   <section id="securite">
     <div class="container">
-      <div class="section-head">
+      <div class="section-head reveal">
         <p class="kicker">Sécurité</p>
         <h2>En cas d’exposition chimique suspectée</h2>
         <p>Des réflexes simples permettent de réduire l’exposition en attendant les instructions des secours.</p>
@@ -452,10 +689,10 @@ h2{
     <img class="safety-poster" src="exposition-chimique.webp" width="1279" height="720" loading="lazy" decoding="async" alt="Illustration de sécurité : s'éloigner, retirer les vêtements potentiellement contaminés, rincer les yeux sans les frotter et laver la peau.">
   </picture>
         <div class="safe-grid">
-          <article class="safe-card"><div class="num">1</div><h3>S’éloigner</h3><p>Quitte la zone et cherche de l’air frais. Suis les instructions des secours.</p></article>
-          <article class="safe-card"><div class="num">2</div><h3>Retirer les vêtements</h3><p>Enlève les vêtements potentiellement contaminés sans les faire passer sur le visage si possible.</p></article>
-          <article class="safe-card"><div class="num">3</div><h3>Rincer les yeux</h3><p>Rince abondamment à l’eau pendant 10 à 15 minutes et ne frotte pas les yeux.</p></article>
-          <article class="safe-card"><div class="num">4</div><h3>Laver la peau</h3><p>Lave la peau et les cheveux avec beaucoup d’eau et du savon doux, sans frotter agressivement.</p></article>
+          <article class="safe-card reveal"><div class="num">1</div><h3>S’éloigner</h3><p>Quitte la zone et cherche de l’air frais. Suis les instructions des secours.</p></article>
+          <article class="safe-card reveal"><div class="num">2</div><h3>Retirer les vêtements</h3><p>Enlève les vêtements potentiellement contaminés sans les faire passer sur le visage si possible.</p></article>
+          <article class="safe-card reveal"><div class="num">3</div><h3>Rincer les yeux</h3><p>Rince abondamment à l’eau pendant 10 à 15 minutes et ne frotte pas les yeux.</p></article>
+          <article class="safe-card reveal"><div class="num">4</div><h3>Laver la peau</h3><p>Lave la peau et les cheveux avec beaucoup d’eau et du savon doux, sans frotter agressivement.</p></article>
         </div>
         <div class="warning"><strong>Important :</strong> un tissu ou vêtement humide ne constitue pas une protection fiable contre un agent chimique. En cas de gêne respiratoire, brûlure, cloques ou troubles visuels, contacte immédiatement les secours.</div>
       </div>
@@ -464,12 +701,12 @@ h2{
 
   <section class="alt countdown-section" id="countdown">
     <div class="container countdown-layout">
-      <div class="section-head" style="margin:0">
+      <div class="section-head reveal" style="margin:0">
         <p class="kicker">17 octobre</p>
         <h2>Compte à rebours</h2>
         <p>Jusqu’au 17 octobre 2026 à 00:00.</p>
       </div>
-      <div class="counter" aria-live="polite">
+      <div class="counter reveal" aria-live="polite">
         <div><span id="days">00</span><small>jours</small></div>
         <div><span id="hours">00</span><small>heures</small></div>
         <div><span id="minutes">00</span><small>minutes</small></div>
@@ -482,6 +719,7 @@ h2{
 <script>
 const target=new Date("2026-10-17T00:00:00+02:00");
 const ids=["days","hours","minutes","seconds"];
+
 function tick(){
   let d=Math.max(0,target-new Date());
   const v=[
@@ -492,7 +730,92 @@ function tick(){
   ];
   ids.forEach((id,i)=>document.getElementById(id).textContent=String(v[i]).padStart(2,"0"));
 }
-tick();setInterval(tick,1000);
+tick();
+setInterval(tick,1000);
+
+// Reveal animations
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12,rootMargin:"0px 0px -40px 0px"});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+// Demo audience counter: visual-only, not a real analytics measurement.
+const viewerEl=document.getElementById("viewer-count");
+let viewers=338;
+setInterval(()=>{
+  viewers=Math.max(326,Math.min(349,viewers+(Math.random()>.5?1:-1)));
+  viewerEl.textContent=viewers;
+},4500);
+
+// Local demo chat. Simulated messages are explicitly labelled by the section.
+const demoMessages=[
+  "Paris ça bouge ou pas là ?",
+  "qqn sait si ça change d'heure à Lille ?",
+  "César Baggio vous êtes là ?",
+  "j'arrive porte des postes dans 10min",
+  "on a besoin d'infos pour le métro svp",
+  "ça capte mal ici mdr",
+  "y'a du monde vers République ?",
+  "les gens de Lille vous passez par où ?",
+  "quelqu'un a une update côté Baggio ?",
+  "on reste ensemble surtout",
+  "Paris vous avez un point de rdv confirmé ?",
+  "j'ai plus beaucoup de batterie si qqn peut relayer",
+  "ça commence a arriver petit a petit",
+  "vous avez vu si les bus circulent encore ?",
+  "faites tourner les infos mais vérifiez avant svp"
+];
+const chatFeed=document.getElementById("chat-feed");
+const chatForm=document.getElementById("chat-form");
+const chatInput=document.getElementById("chat-input");
+let guestId=Math.floor(100+Math.random()*900);
+
+function addMessage(text,name="Guest",simulated=false){
+  const wrap=document.createElement("div");
+  wrap.className="chat-message";
+  const initial=(name.match(/\d+/)?.[0]||"G").slice(-2);
+  const now=new Date().toLocaleTimeString("fr-FR",{hour:"2-digit",minute:"2-digit"});
+  wrap.innerHTML=
+    '<div class="chat-avatar">'+initial+'</div>'+
+    '<div class="chat-bubble">'+
+      '<div class="chat-meta"><b>'+name+'</b><span>'+now+(simulated?' · simulé':'')+'</span></div>'+
+      '<p></p>'+
+    '</div>';
+  wrap.querySelector("p").textContent=text;
+  chatFeed.appendChild(wrap);
+  while(chatFeed.children.length>24) chatFeed.removeChild(chatFeed.firstChild);
+  chatFeed.scrollTop=chatFeed.scrollHeight;
+}
+
+[
+  "salut 👋",
+  "quelqu'un a des infos pour Lille ?",
+  "je check les infos locales avant de bouger"
+].forEach((m,i)=>setTimeout(()=>addMessage(m,"Guest-"+(204+i*37),true),400+i*500));
+
+function scheduleDemo(){
+  const delay=3000+Math.random()*2000;
+  setTimeout(()=>{
+    const msg=demoMessages[Math.floor(Math.random()*demoMessages.length)];
+    const id=Math.floor(100+Math.random()*900);
+    addMessage(msg,"Guest-"+id,true);
+    scheduleDemo();
+  },delay);
+}
+scheduleDemo();
+
+chatForm.addEventListener("submit",e=>{
+  e.preventDefault();
+  const value=chatInput.value.trim();
+  if(!value)return;
+  addMessage(value,"Guest-"+guestId,false);
+  chatInput.value="";
+});
 </script>
 </body>
 </html>
