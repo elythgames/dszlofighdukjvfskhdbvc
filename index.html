@@ -45,6 +45,8 @@ a{text-decoration:none}
   inset:0;
   width:100%;
   height:100%;
+  object-fit:cover;
+  object-position:center;
   z-index:0;
 }
 .hero-shade{
@@ -268,41 +270,7 @@ h2{
 </head>
 <body>
 <header class="hero" id="top">
-  <svg class="hero-art" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <defs>
-      <linearGradient id="hb" x1="0" x2="1"><stop stop-color="#121722"/><stop offset=".48" stop-color="#3a1b22"/><stop offset="1" stop-color="#142031"/></linearGradient>
-      <radialGradient id="hg"><stop stop-color="#ef3340" stop-opacity=".4"/><stop offset="1" stop-color="#ef3340" stop-opacity="0"/></radialGradient>
-    </defs>
-    <rect width="1920" height="1080" fill="url(#hb)"/>
-    <circle cx="940" cy="540" r="480" fill="url(#hg)"/>
-    <g opacity=".95">
-      <rect x="790" y="220" width="340" height="420" rx="20" fill="#d9d6cf"/>
-      <path d="M745 285h430l-215-125z" fill="#c7c3bb"/>
-      <g fill="#29303b"><rect x="825" y="330" width="45" height="245"/><rect x="905" y="330" width="45" height="245"/><rect x="985" y="330" width="45" height="245"/><rect x="1065" y="330" width="45" height="245"/></g>
-      <rect x="850" y="410" width="220" height="72" rx="10" fill="#f0ede8"/>
-      <text x="960" y="442" text-anchor="middle" fill="#151922" font-size="22" font-weight="900" font-family="Arial">ÉDUCATION</text>
-      <text x="960" y="468" text-anchor="middle" fill="#151922" font-size="22" font-weight="900" font-family="Arial">NATIONALE</text>
-    </g>
-    <g fill="#e6e8ec">
-      <circle cx="210" cy="625" r="58"/><rect x="155" y="680" width="110" height="270" rx="40"/>
-      <circle cx="375" cy="585" r="54"/><rect x="324" y="637" width="104" height="295" rx="38"/>
-      <circle cx="545" cy="640" r="53"/><rect x="495" y="692" width="100" height="255" rx="36"/>
-    </g>
-    <g fill="#27344a">
-      <circle cx="1390" cy="610" r="56"/><rect x="1337" y="662" width="110" height="290" rx="38"/>
-      <circle cx="1540" cy="570" r="56"/><rect x="1487" y="622" width="110" height="320" rx="38"/>
-      <circle cx="1690" cy="630" r="56"/><rect x="1637" y="682" width="110" height="265" rx="38"/>
-    </g>
-    <g stroke="#7696bb" stroke-width="5" fill="#202b3e"><rect x="1300" y="735" width="120" height="185" rx="15"/><rect x="1450" y="700" width="120" height="210" rx="15"/><rect x="1600" y="750" width="120" height="170" rx="15"/></g>
-    <g transform="translate(90 805)">
-      <rect width="170" height="92" rx="16" fill="#f4f5f7"/><rect x="68" y="14" width="34" height="64" fill="#ef3340"/><rect x="52" y="30" width="66" height="34" fill="#ef3340"/>
-    </g>
-    <g transform="translate(300 805)">
-      <rect width="190" height="92" rx="16" fill="#f4f5f7"/><path d="M24 72h140l-20-42H55z" fill="#ef3340"/>
-    </g>
-    <text x="1538" y="1000" text-anchor="middle" fill="#b6c8dd" font-size="35" font-weight="900" font-family="Arial">CRS</text>
-    <text x="960" y="745" text-anchor="middle" fill="#fff" font-size="54" font-weight="950" font-family="Arial">17 OCTOBRE</text>
-  </svg>
+  <img class="hero-art" src="hero-athena2.webp" alt="Illustration ATHENA 2 avec jeunes mobilisés, secours, Éducation nationale et CRS, datée du 17 octobre.">
   <div class="hero-shade"></div>
   <div class="container">
     <nav>
@@ -403,41 +371,7 @@ h2{
         <p>Des réflexes simples permettent de réduire l’exposition en attendant les instructions des secours.</p>
       </div>
       <div class="safety-wrap">
-        <svg class="safety-poster" viewBox="0 0 1600 620" role="img" aria-label="Guide illustré de sécurité en cas d'exposition chimique suspectée">
-          <rect width="1600" height="620" fill="#10151e"/>
-          <text x="800" y="78" text-anchor="middle" fill="#fff" font-size="45" font-weight="900" font-family="Arial">EXPOSITION CHIMIQUE SUSPECTÉE</text>
-          <text x="800" y="120" text-anchor="middle" fill="#ff6973" font-size="22" font-weight="800" font-family="Arial">RÉFLEXES IMMÉDIATS</text>
-          <g font-family="Arial">
-            <g transform="translate(100 175)">
-              <rect width="320" height="350" rx="22" fill="#192231"/>
-              <circle cx="56" cy="56" r="33" fill="#ef3340"/><text x="56" y="68" text-anchor="middle" fill="#fff" font-size="30" font-weight="900">1</text>
-              <path d="M82 175h145l-50-50m50 50-50 50" stroke="#fff" stroke-width="19" fill="none"/>
-              <text x="160" y="272" text-anchor="middle" fill="#fff" font-size="26" font-weight="900">ÉLOIGNE-TOI</text>
-              <text x="160" y="310" text-anchor="middle" fill="#bdc7d5" font-size="18">Quitte la zone.</text>
-            </g>
-            <g transform="translate(460 175)">
-              <rect width="320" height="350" rx="22" fill="#192231"/>
-              <circle cx="56" cy="56" r="33" fill="#ef3340"/><text x="56" y="68" text-anchor="middle" fill="#fff" font-size="30" font-weight="900">2</text>
-              <path d="M95 125l65-42 65 42 43 90-50 20-20-55v78h-76v-78l-20 55-50-20z" fill="#fff"/>
-              <text x="160" y="272" text-anchor="middle" fill="#fff" font-size="21" font-weight="900">RETIRE LES VÊTEMENTS</text>
-              <text x="160" y="310" text-anchor="middle" fill="#bdc7d5" font-size="18">Évite le visage.</text>
-            </g>
-            <g transform="translate(820 175)">
-              <rect width="320" height="350" rx="22" fill="#192231"/>
-              <circle cx="56" cy="56" r="33" fill="#ef3340"/><text x="56" y="68" text-anchor="middle" fill="#fff" font-size="30" font-weight="900">3</text>
-              <path d="M72 178q88-70 176 0-88 70-176 0z" fill="none" stroke="#fff" stroke-width="17"/><circle cx="160" cy="178" r="29" fill="#7dc8ff"/>
-              <text x="160" y="272" text-anchor="middle" fill="#fff" font-size="24" font-weight="900">RINCE LES YEUX</text>
-              <text x="160" y="310" text-anchor="middle" fill="#ff6973" font-size="18" font-weight="900">NE FROTTE PAS.</text>
-            </g>
-            <g transform="translate(1180 175)">
-              <rect width="320" height="350" rx="22" fill="#192231"/>
-              <circle cx="56" cy="56" r="33" fill="#ef3340"/><text x="56" y="68" text-anchor="middle" fill="#fff" font-size="30" font-weight="900">4</text>
-              <path d="M90 120h140v110H90z" fill="#fff"/><path d="M108 185q52 46 104 0" stroke="#7dc8ff" stroke-width="14" fill="none"/>
-              <text x="160" y="272" text-anchor="middle" fill="#fff" font-size="24" font-weight="900">LAVE LA PEAU</text>
-              <text x="160" y="310" text-anchor="middle" fill="#bdc7d5" font-size="18">Eau + savon doux.</text>
-            </g>
-          </g>
-        </svg>
+        <img class="safety-poster" src="exposition-chimique.webp" alt="Illustration de sécurité : s'éloigner, retirer les vêtements potentiellement contaminés, rincer les yeux sans les frotter et laver la peau.">
         <div class="safe-grid">
           <article class="safe-card"><div class="num">1</div><h3>S’éloigner</h3><p>Quitte la zone et cherche de l’air frais. Suis les instructions des secours.</p></article>
           <article class="safe-card"><div class="num">2</div><h3>Retirer les vêtements</h3><p>Enlève les vêtements potentiellement contaminés sans les faire passer sur le visage si possible.</p></article>
