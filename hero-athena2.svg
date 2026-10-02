@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" role="img" aria-labelledby="t d">
+<title id="t">ATHENA 2 — 17 octobre</title>
+<desc id="d">Affiche illustrée sombre montrant des jeunes, des secours et des forces de l'ordre face à face, avec des références à l'Éducation nationale.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" x2="1"><stop stop-color="#101218"/><stop offset=".48" stop-color="#272028"/><stop offset="1" stop-color="#111923"/></linearGradient>
+  <linearGradient id="red" x1="0" x2="1"><stop stop-color="#ff2638"/><stop offset="1" stop-color="#8f101c"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+<rect width="1920" height="1080" fill="url(#bg)"/>
+<circle cx="960" cy="500" r="430" fill="#d22638" opacity=".12" filter="url(#glow)"/>
+<text x="960" y="105" text-anchor="middle" fill="#f5f5f5" font-family="Arial,sans-serif" font-weight="900" font-size="76">ATHENA 2</text>
+<text x="960" y="175" text-anchor="middle" fill="#ff4050" font-family="Arial,sans-serif" font-weight="800" font-size="46">17 OCTOBRE</text>
+
+<!-- institutional center -->
+<rect x="790" y="250" width="340" height="350" rx="24" fill="#e9e4da" opacity=".92"/>
+<path d="M760 300h400l-200-105z" fill="#d6d0c6"/>
+<g fill="#292d35">
+  <rect x="830" y="330" width="45" height="210"/><rect x="910" y="330" width="45" height="210"/><rect x="990" y="330" width="45" height="210"/><rect x="1070" y="330" width="45" height="210"/>
+</g>
+<text x="960" y="405" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="28" fill="#111">ÉDUCATION</text>
+<text x="960" y="440" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="28" fill="#111">NATIONALE</text>
+
+<!-- left crowd -->
+<g fill="#d7d8dc">
+  <circle cx="240" cy="605" r="55"/><rect x="190" y="660" width="100" height="250" rx="34"/>
+  <circle cx="390" cy="570" r="52"/><rect x="342" y="625" width="96" height="270" rx="32"/>
+  <circle cx="540" cy="620" r="50"/><rect x="495" y="670" width="92" height="240" rx="30"/>
+</g>
+<g fill="#f05462">
+  <rect x="120" y="300" width="360" height="130" rx="16" transform="rotate(-5 300 365)"/>
+  <text x="300" y="355" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-weight="900" font-size="38">GEN Z</text>
+  <text x="300" y="400" text-anchor="middle" fill="white" font-family="Arial,sans-serif" font-weight="800" font-size="25">CONDITIONS D'ÉTUDES DIGNES</text>
+</g>
+<!-- emergency support -->
+<g transform="translate(80 780)">
+  <rect width="165" height="95" rx="18" fill="#f5f5f5"/><rect x="66" y="15" width="32" height="64" fill="#e63946"/><rect x="50" y="31" width="64" height="32" fill="#e63946"/>
+  <text x="82" y="125" text-anchor="middle" fill="#f5f5f5" font-family="Arial" font-size="24">SOINS</text>
+</g>
+<g transform="translate(300 780)">
+  <rect width="180" height="95" rx="18" fill="#f5f5f5"/><path d="M20 72h140l-18-38H50z" fill="#e63946"/>
+  <text x="90" y="125" text-anchor="middle" fill="#f5f5f5" font-family="Arial" font-size="24">POMPIERS</text>
+</g>
+
+<!-- right CRS silhouettes -->
+<g fill="#263247">
+  <circle cx="1400" cy="580" r="52"/><rect x="1350" y="630" width="105" height="290" rx="28"/>
+  <circle cx="1540" cy="545" r="52"/><rect x="1490" y="595" width="105" height="320" rx="28"/>
+  <circle cx="1680" cy="600" r="52"/><rect x="1630" y="650" width="105" height="270" rx="28"/>
+</g>
+<g fill="#202a3b" stroke="#7696bb" stroke-width="4">
+  <rect x="1320" y="690" width="115" height="205" rx="16"/><rect x="1470" y="655" width="115" height="230" rx="16"/><rect x="1620" y="705" width="115" height="185" rx="16"/>
+</g>
+<text x="1535" y="970" text-anchor="middle" fill="#a9bdd5" font-family="Arial,sans-serif" font-weight="800" font-size="34">CRS</text>
+
+<path d="M660 610L800 610" stroke="#e63946" stroke-width="8"/>
+<path d="M1120 610L1260 610" stroke="#6785aa" stroke-width="8"/>
+<text x="960" y="1000" text-anchor="middle" fill="#d8d9dd" font-family="Arial,sans-serif" font-size="28">Jeunesse · personnels éducatifs · services publics · secours</text>
+</svg>
